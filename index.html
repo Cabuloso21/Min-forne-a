@@ -1,504 +1,388 @@
 
 <!DOCTYPE html>
- <html lang="pt-BR">
- <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Meu Editor Principal</title>
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- </head>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exemplo de Grid Flexível</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+ 
   
 <style>
-
+ 
  body {
- margin: 0px;
  font-family: Arial, sans-serif;
-}
-   
- 
-
- .header-menu-container {
- display: flex;
- align-items: center;
- justify-content: space-between;
- background-color: blue;
- padding: 10px;
- height: 40px;
- width: none;
- top: 0px;
- z-index: 10px;
- 
- 
-    
- }
-    
- .menu-container {
- display: flex;
- flex-direction: column; /* Stack menu items vertically */
-  
- }
-
- .headerlogo {
- color: #333;
- font-size: 25px;
- margin-left: 10px;
- font-weight: bold; 
-   
- }
-
- #toggle-btn {
- background-color: transparent;
- border: none;
- padding: 10px;
- cursor: pointer;
- color: #333;
-  font-size: 20px;
- }
-
- #sidebar {
- background-color: #444;
- color: black; /* Alterado para preto para melhorar a visibilidade */
- border-bottom: 1px solid none;
- padding: 20px;
- display: none; /* Inicialmente oculto */
- position: absolute; /* Para sobrepor o restante do conteúdo */
- top: 60px; /* Posicionado abaixo do cabeçalho */
- left: 0px;
- width: 88.80%;
- z-index: 100; /* Sobrepor outros elementos */
- border: 1px solid none; 
- border-radius: none;
- }
-
- #sidebar ul {
- list-style: none;
+ margin: 0;
  padding: 0;
+ background-color: white;
    
- }
+}
+  
+ .arrow {
+ display: inline-block;
+ width: 10px;
+ height: 10px;
+ border-top: 2px solid black;
+ border-right: 2px solid black;
+ transform: rotate(-130deg);
+ position: absolute;
+ top: 25px;
+ left: 15px;
+}
 
- #sidebar li {
- margin-bottom: 20px;
-      
- }
+ header {
+ background-color: #cc1;
+ padding: 20px;
+ text-align: center;
+   
+}   
 
- li a {
- color: white;
- font-size: 16px;
- text-decoration: none; /* Remove o sublinhado dos links */
- font-weight: none;
- margin-top: 0px;
-
- }
-
- .opções {
- color: white;
+ h1 {
+ margin: 0;
  margin-top: 0px;
  font-size: 22px;
+ color: black;
+      
+}
+
+ #addCategory {
+ background-color: #cc2;
+ color: black;
+ padding: 12px 20px;
+ border: none;
+ border-radius: 10px;
+ cursor: pointer;
+ margin-left: 15px;
+ margin-top: 5px;
+ font-size: 15px;
  font-weight: bold;
- text-align: center;
- line-height: 1.3;
+      
+}
+  
+ #addCategory:hover {
+ background-color: #cc2;
+      
+}
+
+ #searchCategory {
+ padding: 12px;
  margin-left: 10px;
- margin-right: 10px;
- border-bottom: 1px solid none;
+ border: 1px solid #ccc;
+ border-radius: 4px;
+   
+}
+
+ #categoriesContainer > div {
+ border: 1px solid #ccc;
+ border-radius: 5px;
+ position: center;
+ flex-wrap: wrap;
  padding: 10px;
-    
- }
-  
 
-
-
- 
-
-#buttons {
-      display: flex;
-      
-      padding: 0px;
-      overflow-x: scroll;
-     border-bottom: 1px solid goldenrod;
- }
-
-     
-  
-    #buttons button {
-      margin-right: 0px;
-      margin-left: 0px;
-      
-      
-    }
-
-    button {
-      
-      padding: 8px 16px;
-      font-size: 14px;
-      font-weight: bold;
-      cursor: pointer;
-      background-color: #f1f1f1;
-      color:  black;   
-      border: none;
-      border-radius: nonepx;
-      display: inline-block;
-      
-    }
-
- #editorContainer {
-      display: flex;
-       border: none;
-      overflow-x: auto; /* Permite rolagem horizontal se o conteúdo ultrapassar a largura */
-    }
-
-    #editor {
-    min-width: 97%; /* Largura mínima do editor para evitar redimensionamento excessivo */
-    height: 1000px;
-    border: none;
-      font-size: 15.60px;
-      padding: 5px;
-      resize: horizontal; /* Permite redimensionamento horizontal do editor */
-      white-space: nowrap;
-      overflow-x: auto;
-      outline: none;
-      background: white;
-      color: black;
-      margin-top: 20px;
-      border-top: 1px solid #ccc;/* Adiciona uma linha sólida de 1px na parte superior */
-}
-      
-
-
-
- #fileContainer {
- overflow-x: scroll;
- display: flex;
- overflow-x: auto; /* Habilita a rolagem horizontal */
- white-space: nowrap; /* Evita que os elementos quebrem a linha */
-}
-
-    
+ background: white;
+ border-radius: 5px;
+ box-shadow:  0 2px 10px rgba(0, 0, 0, 0.2);
    
+}
   
+ #categoriesContainer > div h3 {
+ font-size: 22px;
+ padding: 5px;
+ margin-top: 1px;
+ color: black;
+ border-bottom: none px solid #cc1;
+  
+}
 
-  .html-file {
-    margin-left: 7px; /* Espaçamento entre os arquivos */
-    margin-right: 7px;
-    white-space: nowrap; /* Impede que o nome do arquivo quebre para a próxima linha */
-    text-align: absolute;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    color: black;
-    padding: 5px 5px;
-    margin-top: 20px;
-    border-bottom: 1px solid none;
-   display: inline-block;
-   font-size: 15px;
+  
+ #categoriesContainer > div p {
+ font-size: 17px;
+ margin-top: 0px;
+ color: black;
+ font-weight: bold;
+ padding: 1px;
  
-  } 
+}
 
-  .html-file:hover {
-   background-color: #ff7700;
- }
+ input[type="number"] {
+ width: 40%;
+ margin-top: 1px;
+ padding: 10px;
+ border: 1px solid #ccc;
+ border-radius: 4px;
+ margin-bottom: 35px;
+ margin-left: 0px;
+        
+}
 
-
-    
-
-
-footer {
-   background-color: #555;
-   padding: 5px;
-   margin-top: 0px;
-   border-bottom: 1px solid white; 
+.delete-button {
+ color: #f00;
+ cursor: pointer;
+ font-size: 15px;
+ font-weight: bold;
+ margin-left: 10px;
       
-   }
-    
-   
-  .brand p {
-   font-size: 13px;
-   color: silver;
-   margin-top: 30px;
-   text-align: absolute;
-   margin-left: 25px;
-    
-   }
+}
 
-</style>
+.delete-button:hover {
+ text-decoration: underline;
   
+}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Editor</title>
-<link rel="stylesheet" href="path/to/font-awesome.css"> <!-- Inclua o caminho para o FontAwesome -->
-<style>
-/* Adicione estilos conforme necessário */
-.drag-over {
-  border: 2px dashed #000;
+ button {
+ background-color: #cc2;
+ color: black;
+ padding: 10px 10px;
+ border: none;
+ border-radius: 50px;
+ cursor: pointer;
+ margin-left: 180px;
+ font-size: 15px;
+ font-weight: bold;
+ margin-bottom: 10px;
+      
 }
-.html-file.selected {
-  background-color: #d3d3d3;
+
+ button:hover {
+ background-color: none;
+   
 }
+
+  
+ label {
+ margin: 10px;
+ color: black;
+ font-size: 17px;
+ font-weight: bold;
+  
+}
+  
+ #categoriesContainer> div input[type="text"] {
+ padding: 10px;
+ width: 300px;
+ margin: 5px;
+ border: none;
+ border-radius: none;
+ font-size: 16px;
+ border-bottom: 1.50px solid #ccc;
+ margin-bottom: 30px;
+   
+} 
+  
 </style>
-</head>
-<body>
-<div class="header-menu-container">
-    <div class="headerlogo">Editor</div>
-    <div class="menu-container">
-        <button id="toggle-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
-        <nav id="sidebar">
-            <div class="opções">Menu</div>
-            <ul>
-                <li><a href="painel.html">Layouts</a></li>
-                <li><a href="cores.html">Cores</a></li>
-                <li><a href="stylo de letras.html">Stilo de letras</a></li>
-                <li><a href="responsivo.html">Site responsivo</a></li>
-                <li><a href="minificadorcodi.html">Minificar código</a></li>
-                <li><a href="meu editor 2.html">Editor princ</a></li>
-            </ul>
-        </nav>
-    </div>
-</div>
-<div id="content"></div>
 
-<div id="buttons">
-    <button onclick="runCode()">Executar</button>
-    <button onclick="promptFileName()">Criar Arquivo</button>
-    <button onclick="openFileInput()">Adicionar Arquivo</button>
-    <input type="file" id="fileInput" accept=".html" multiple style="display: none;">
-    <button onclick="editFileName()">Editar arquivo</button>
-    <button onclick="deleteCode()">Excluir</button>
-    <button onclick="saveToFile()">Salvar</button>
-</div>
+  
+<a href="index.html">
+<span class="arrow"></span>
+</a>
 
-<div id="fileContainer"></div>
-<textarea id="editor" placeholder="Digite seu código aqui" oninput="autoSaveCodeToAssociatedFile()"></textarea>
+  
+<header>
+<h1>Meus estudantes</h1>
+</header>
 
-<footer>
-    <div class="brand">
-        <p>&copy;2024°-Creadex. Todos os direitos reservados.</p>
-    </div>
-</footer>
+<script defer src="estudante.js"></script>
+
+
+<button id="addCategory">Adicionar</button>
+<input type="text" id="searchCategory" placeholder="Pesquisar estudante" oninput="searchCategories()">
+    
+<div id="categoriesContainer"></div>
+
 
 <script>
-    var editor = document.getElementById("editor");
-    var fileInput = document.getElementById("fileInput");
-    var filesData = JSON.parse(localStorage.getItem('filesData')) || {}; // Dados dos arquivos HTML criados
+const addButton = document.getElementById('addCategory');
+const searchInput = document.getElementById('searchCategory');
 
-    function runCode() {
-        var code = editor.value;
-        var newWindow = window.open();
-        newWindow.document.write(code);
-        newWindow.document.close();
-        newWindow.focus();
-        localStorage.setItem("savedCode", code);
+const categoriesContainer = document.getElementById('categoriesContainer');
+
+  
+// Carregar categorias do localStorage ao carregar a página
+window.addEventListener('load', loadCategories);
+
+addButton.addEventListener('click', showCategoryMessage);
+
+function loadCategories() {
+const savedCategories = JSON.parse(localStorage.getItem('categories')) || [];
+savedCategories.forEach((categoryData) => {
+createCategory(categoryData);
+ });
+}
+
+function showCategoryMessage() {
+const categoryName = prompt("Nome do Estudante:");
+if (categoryName) {
+const categoryData = {
+name: categoryName,
+description: "Contato",
+livro: "",
+tema: "",
+capitulo: "",
+proximoEstudo: "",
+dia: "",
+horario: "",
+phoneNumber: "",
+};
+
+createCategory(categoryData);
+saveCategories();
+ }
+}
+
+function createCategory(categoryData) {
+const categoryDiv = document.createElement('div');
+categoryDiv.innerHTML = `
+                
+<h3 contenteditable="true" oninput="saveCategories()">${categoryData.name}</h3>
+<p contenteditable="true" oninput="saveCategories()">${categoryData.description}</p>
+<input type="number" placeholder="Número do WhatsApp" value="${categoryData.phoneNumber}" oninput="saveCategoriesPhoneNumber(this)">
+<div>
+<label for="livro">Livro de estudo:</label>
+<input type="text" id="livro" value="${categoryData.livro}" oninput="updateCategoryField(this, 'livro')">
+</div>
+<div>
+<label for="tema">Capitulo:</label>
+<input type="text" id="tema" value="${categoryData.tema}" oninput="updateCategoryField(this, 'tema')">
+</div>
+<div>
+<label for="capitulo">Lição:</label>
+<input type="text" id="capitulo" value="${categoryData.capitulo}" oninput="updateCategoryField(this, 'capitulo')">
+</div>
+<div>
+<label for="proximoEstudo">Próximo estudo:</label>
+<input type="text" id="proximoEstudo" value="${categoryData.proximoEstudo}" oninput="updateCategoryField(this, 'proximoEstudo')">
+</div>
+<div>
+<label for="dia">Dia:</label>
+<input type="text" id="dia" value="${categoryData.dia}" oninput="updateCategoryField(this, 'dia')">
+</div>
+<div>
+                    
+<label for="horario">Horario:</label>
+<input type="text" id="horario" value="${categoryData.horario}" oninput="formatHora(this)">
+
+</div>
+<span class="delete-button" onclick="deleteCategory(this)">Excluir</span>
+<button onclick="redirectToWhatsApp(this)">Conversar</button>
+`;
+
+categoriesContainer.appendChild(categoryDiv);
+}
+
+function saveCategoriesPhoneNumber(input) {
+const categoryDiv = input.parentElement;
+const categoryName = categoryDiv.querySelector('h3').textContent;
+const phoneNumber = input.value;
+updateCategoryField(categoryName, 'phoneNumber', phoneNumber);
+}
+
+function deleteCategory(deleteButton) {
+const categoryDiv = deleteButton.parentElement;
+categoryDiv.remove();
+saveCategories();
+}
+
+function updateCategoryField(categoryName, field, value) {
+const savedCategories = JSON.parse(localStorage.getItem('categories')) || [];
+const updatedCategories = savedCategories.map((category) => {
+if (category.name === categoryName) {
+category[field] = value;
+}
+
+return category;
+});
+      
+localStorage.setItem('categories', JSON.stringify(updatedCategories));
+saveCategories();
+}
+
+function saveCategories() {
+const categories = Array.from(categoriesContainer.children);
+const categoriesData = categories.map((category) => ({
+name: category.querySelector('h3').textContent,
+description: category.querySelector('p').textContent,
+phoneNumber: category.querySelector('input[type="number"]').value,
+livro: category.querySelector('#livro').value,
+tema: category.querySelector('#tema').value,
+capitulo: category.querySelector('#capitulo').value,
+proximoEstudo: category.querySelector('#proximoEstudo').value,
+dia: category.querySelector('#dia').value,
+horario: category.querySelector('#horario').value,
+}));
+
+localStorage.setItem('categories', JSON.stringify(categoriesData));
+}
+
+function redirectToWhatsApp(button) {
+const categoryDiv = button.parentElement;
+const categoryName = categoryDiv.querySelector('h3').textContent;
+const savedCategories = JSON.parse(localStorage.getItem('categories')) || [];
+const categoryData = savedCategories.find(category => category.name === categoryName);
+
+if (categoryData) {
+const phoneNumber = categoryData.phoneNumber;
+if (phoneNumber) {
+  
+window.location.href = `https://api.whatsapp.com/send?phone=${phoneNumber}`;
+} else {
+
+alert("Para conversar com seu estudante, adicione o número do WhatsApp dele.");
+   }
+ }
+}
+
+function searchCategories() {
+const searchTerm = searchInput.value.toLowerCase();
+const categories = categoriesContainer.children;
+
+for (let i = 0; i < categories.length; i++) {
+const category = categories[i];
+const categoryName = category.querySelector('h3').textContent.toLowerCase();
+
+if (categoryName.includes(searchTerm)) {
+category.style.display = 'block';
+} else {
+category.style.display = 'none';
     }
+  }
+}
 
-    function promptFileName() {
-        var fileName = prompt('Digite o nome do arquivo HTML:');
-        if (fileName === null || fileName.trim() === '') {
-            return;
-        }
-        createAndDisplayHTMLFile(fileName.trim());
-    }
 
-    function createAndDisplayHTMLFile(fileName) {
-        var htmlContent = `<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>${fileName}</title>
-</head>
-<body>
-  <h1>${fileName}</h1>
-</body>
-</html>`;
+function formatHora(input) {
+const hora = input.value;
+if (hora.length === 2 && hora.indexOf(':') === -1) {
+input.value = hora + ':00';
+ }
+saveCategories(); // Altere de saveHorario() para saveCategories()
+ }
+    
+    
+function saveHorario() {
+const horarioInput = document.getElementById("horario");
+const horario = horarioInput.value;
 
-        var fileId = generateUniqueId();
-        filesData[fileId] = { fileName: fileName, htmlContent: htmlContent };
-        saveFilesDataToLocalStorage();
+// Use o localStorage para armazenar a hora
+localStorage.setItem("horario", horario);
+}
 
-        var fileContainer = document.getElementById('fileContainer');
-        var newFileContent = document.createElement('div');
-        newFileContent.classList.add('html-file');
-        newFileContent.dataset.fileId = fileId;
-        newFileContent.textContent = `${fileName}.html`;
-        newFileContent.draggable = true;
-        newFileContent.addEventListener('dragstart', dragStart);
-        newFileContent.addEventListener('dragover', dragOver);
-        newFileContent.addEventListener('drop', drop);
-        newFileContent.addEventListener('click', selectFile);
-        fileContainer.appendChild(newFileContent);
-    }
+function loadHorario() {
+const horarioSaved = localStorage.getItem("horario");
+if (horarioSaved) {
+document.getElementById("horario").value = horarioSaved;
+ }
+}
 
-    function generateUniqueId() {
-        return '_' + Math.random().toString(36).substr(2, 9);
-    }
+document.getElementById("horario").addEventListener("input", formatHora);
+loadHorario();
 
-    function autoSaveCodeToAssociatedFile() {
-        var selectedFileId = document.querySelector('.html-file.selected')?.dataset.fileId;
-        if (selectedFileId && filesData[selectedFileId]) {
-            filesData[selectedFileId].htmlContent = editor.value;
-            saveFilesDataToLocalStorage();
-        }
-    }
-
-    function saveFilesDataToLocalStorage() {
-        localStorage.setItem('filesData', JSON.stringify(filesData));
-    }
-
-    function editFileName() {
-        var selectedFileId = document.querySelector('.html-file.selected')?.dataset.fileId;
-        if (!selectedFileId || !filesData[selectedFileId]) {
-            alert("Selecione um arquivo para editar o nome.");
-            return;
-        }
-        var newFileName = prompt('Digite o novo nome para o arquivo:', filesData[selectedFileId].fileName);
-        if (newFileName === null || newFileName.trim() === '') {
-            alert('Por favor, insira um nome válido para o arquivo.');
-            return;
-        }
-        filesData[selectedFileId].fileName = newFileName.trim();
-        saveFilesDataToLocalStorage();
-        var fileToUpdate = document.querySelector(`.html-file[data-file-id="${selectedFileId}"]`);
-        fileToUpdate.textContent = `${newFileName}.html`;
-    }
-
-    function deleteCode() {
-        var selectedFileId = document.querySelector('.html-file.selected')?.dataset.fileId;
-        if (!selectedFileId || !filesData[selectedFileId]) {
-            alert("Não há arquivo selecionado para excluir.");
-            return;
-        }
-        var fileName = filesData[selectedFileId].fileName;
-        var confirmDelete = confirm(`Tem certeza de que deseja excluir o arquivo "${fileName}.html"?`);
-        if (confirmDelete) {
-            var fileToRemove = document.querySelector(`.html-file[data-file-id="${selectedFileId}"]`);
-            fileToRemove.remove();
-            if (editor.value === filesData[selectedFileId].htmlContent) {
-                editor.value = '';
-            }
-            delete filesData[selectedFileId];
-            saveFilesDataToLocalStorage();
-        }
-    }
-
-    function saveToFile() {
-        var selectedFile = document.querySelector('.html-file.selected');
-        if (!selectedFile) {
-            alert("Por favor, selecione um arquivo para salvar.");
-            return;
-        }
-        var fileId = selectedFile.dataset.fileId;
-        if (!filesData[fileId]) {
-            alert("Arquivo não encontrado.");
-            return;
-        }
-        var code = filesData[fileId].htmlContent;
-        var fileName = filesData[fileId].fileName;
-        var blob = new Blob([code], { type: "text/html" });
-        var a = document.createElement("a");
-        a.href = URL.createObjectURL(blob);
-        a.download = fileName + ".html";
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-    }
-
-    function openFileInput() {
-        fileInput.click();
-    }
-
-    function addFiles(event) {
-        var files = event.target.files;
-        for (var i = 0; i < files.length; i++) {
-            var file = files[i];
-            if (file.type === 'text/html') {
-                var reader = new FileReader();
-                reader.onload = (function(file) {
-                    return function(e) {
-                        var content = e.target.result;
-                        var fileId = generateUniqueId();
-                        var fileName = file.name.replace('.html', '');
-                        filesData[fileId] = { fileName: fileName, htmlContent: content };
-                        saveFilesDataToLocalStorage();
-                        displayFiles();
-                    };
-                })(file);
-                reader.readAsText(file);
-            } else {
-                alert('Por favor, selecione apenas arquivos HTML.');
-            }
-        }
-    }
-
-    function displayFiles() {
-        var fileContainer = document.getElementById('fileContainer');
-        fileContainer.innerHTML = '';
-        for (var fileId in filesData) {
-            var fileName = filesData[fileId].fileName;
-            var newFileContent = document.createElement('div');
-            newFileContent.classList.add('html-file');
-            newFileContent.dataset.fileId = fileId;
-            newFileContent.textContent = `${fileName}.html`;
-            newFileContent.draggable = true;
-            newFileContent.addEventListener('dragstart', dragStart);
-            newFileContent.addEventListener('dragover', dragOver);
-            newFileContent.addEventListener('drop', drop);
-            newFileContent.addEventListener('click', selectFile);
-            fileContainer.appendChild(newFileContent);
-        }
-    }
-
-    function selectFile(event) {
-        var target = event.target;
-        document.querySelectorAll('.html-file').forEach(function(element) {
-            element.classList.remove('selected');
-        });
-        target.classList.add('selected');
-        var fileId = target.dataset.fileId;
-        editor.value = filesData[fileId].htmlContent;
-    }
-
-    function dragStart(e) {
-        e.dataTransfer.setData('text/plain', e.target.dataset.fileId);
-    }
-
-    function dragOver(e) {
-        e.preventDefault();
-        e.target.classList.add('drag-over');
-    }
-
-    function drop(e) {
-        e.preventDefault();
-        e.target.classList.remove('drag-over');
-        var draggedId = e.dataTransfer.getData('text/plain');
-        var targetId = e.target.dataset.fileId;
-        if (draggedId !== targetId) {
-            var draggedFile = filesData[draggedId];
-            var targetFile = filesData[targetId];
-            filesData[draggedId] = targetFile;
-            filesData[targetId] = draggedFile;
-            saveFilesDataToLocalStorage();
-            displayFiles();
-        }
-    }
-
-    fileInput.addEventListener('change', addFiles);
-    document.addEventListener('DOMContentLoaded', displayFiles);
 </script>
-</body>
-</html>
+  
 
 
 
 
-
-
-
-
-
-
-
-
+ 
 
 
